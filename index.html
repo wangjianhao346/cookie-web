@@ -3,13 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/common.css">
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/main.js"></script>-->
     <title>首页</title>
 </head>
+<style>
+    body {
+        margin: 0 0;
+    }
+</style>
 <body>
-    <a href="http://localhost:8089/admin">admin</a><br>
-    <a href="http://localhost:8089/module">module</a><br>
-    <a href="http://localhost:8089/article">article</a>
+<!-- 导入导航条 -->
+<div class="navigationBar"></div>
+<!--<iframe src="page/common/navbar.html" frameborder="0"></iframe>-->
+<div class="container" style="padding: 0;top: 50px;">
+    <!-- 左侧内容区 -->
+    <div class="col-md-9 col-xs-12">
+        <!-- 页面路径 -->
+        <div id="path"></div>
+        <!--手机版在此显示搜索框-->
+        <div class="visible-xs visible-sm">
+            <div class="search"></div>
+        </div>
+        <!-- 内容 -->
+        <div id="content"></div>
+    </div>
+    <!-- 右侧内容区 -->
+    <div class="col-md-3 visible-md visible-lg" style="margin: 0">
+        <!-- 搜索区 -->
+        <div class="search"></div>
+        <!-- 个人信息 -->
+        <div id="myInfo"></div>
+        <!-- 最近文章 -->
+        <div id="recentArticle"></div>
+        <!-- 归档 -->
+        <div id="archive"></div>
+    </div>
+</div>
+<hr>
+<!-- footer -->
+<div id="footer"></div>
 </body>
+
+<script>
+    $(function () {
+        let path = "page/common/";
+        $.getScript("js/navbar.js");
+        $('head').append('<link rel="stylesheet" href="css/bootstrap.min.css">' +
+            '<link rel="stylesheet" href="css/common.css">' +
+            '<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">');
+        $(".navigationBar").load(path + "navbar.html");
+        $("#path").load(path + "pathNav.html");
+        $("#content").load(path + "content.html");
+        $(".search").load(path + "search.html");
+        $("#myInfo").load(path + "myinfo.html");
+        $("#recentArticle").load(path + "recentArticles.html");
+        $("#archive").load(path + "archive.html");
+        $("#footer").load(path + "footer.html");
+    })
+</script>
+
 </html>
